@@ -111,7 +111,7 @@ function register($request, $response, $args){
     }
     if ($body['password'] !== $body['passwordVerification'])
     {
-      echo $body['password'];
+      echo "____________________" + $body['password'];
       echo $body['passwordVerification'];
       $validated = false;
       $response->write(json_encode("body.password and body.passwordVerification aren't matching"));
