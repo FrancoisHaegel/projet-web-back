@@ -82,7 +82,7 @@ function login($request, $response, $args){
           'exp' => $expirationTime
         );
         $token_jwt = JWT::encode($payload, JWT_SECRET, "HS256");
-        $data = array('token' => $token_jwt);
+        $data = array('token' => $token_jwt, 'id' => $user->id);
         $response = $response->withStatus(200);
         return $response->write(json_encode($data, JSON_UNESCAPED_SLASHES));
       }
