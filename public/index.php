@@ -1,8 +1,8 @@
 <?php
 use \Firebase\JWT\JWT;
 
-require 'vendor/autoload.php';
-require 'bootstrap.php';
+require '../vendor/autoload.php';
+require '../config/bootstrap.php';
 
 $app = new \Slim\App;
 
