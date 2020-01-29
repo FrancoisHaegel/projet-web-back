@@ -47,12 +47,23 @@ $app->get('/api/articles', 'getAllArticles');
 $app->get('/api/articles/{id}', 'getOneArticles');
 
 $app->get('/api/users', 'getAllUsers');
+$app->get('/api/users/{id}', 'getOneUsers');
 
 function getAllUsers($request, $response, $args) {
     global $entityManager;
     $userRepository = $entityManager->getRepository('Users');
 
     return $response->write(json_encode($userRepository->findAll(), JSON_UNESCAPED_SLASHES));
+}
+
+function getOneUsers($request, $response, $args){
+  global $entityManager;
+  $userRepository = $entityManager->getRepository('Users');
+
+  if(isset($args['id'])){
+      return $response->write(json_encode($userRepository->findBy(array('id'=> $args['id'])), JSON_UNESCAPED_SLASHES));
+  }
+  return $response->withStatus(404);
 }
 
 function login($request, $response, $args){
