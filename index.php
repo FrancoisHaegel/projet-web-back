@@ -4,7 +4,7 @@ use \Firebase\JWT\JWT;
 require 'vendor/autoload.php';
 require 'bootstrap.php';
 
-$app = new \Slim\App();
+$app = new \Slim\App;
 
 $app->post('/users/login', 'login');
 $app->post('/users/register', 'register');
