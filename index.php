@@ -6,14 +6,6 @@ require 'bootstrap.php';
 
 $app = new \Slim\App;
 
-$app->post('/users/login', 'login');
-$app->post('/users/register', 'register');
-
-$app->get('/api/articles', 'getAllArticles');
-$app->get('/api/articles/{id}', 'getOneArticles');
-
-$app->get('/api/users', 'getAllUsers');
-
 const JWT_SECRET = "OIHLJDSHLSHLKDSLKHDLS";
 
 $jwt = new Slim\Middleware\JwtAuthentication([
@@ -47,6 +39,14 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
+
+$app->post('/users/login', 'login');
+$app->post('/users/register', 'register');
+
+$app->get('/api/articles', 'getAllArticles');
+$app->get('/api/articles/{id}', 'getOneArticles');
+
+$app->get('/api/users', 'getAllUsers');
 
 function getAllUsers($request, $response, $args) {
     global $entityManager;
