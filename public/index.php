@@ -77,7 +77,7 @@ function login($request, $response, $args){
         $issueAt = time();
         $expirationTime = $issueAt + 3600 * 24 * 1;
         $payload = array(
-          'userid' => $user.id,
+          'userid' => $user->id,
           'iat' => $issueAt,
           'exp' => $expirationTime
         );
